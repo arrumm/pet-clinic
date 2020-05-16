@@ -1,4 +1,4 @@
-package rumm.springframework.petclinic.model;
+package rumm.springframework.model;
 
 public class PetType {
     private String name;
