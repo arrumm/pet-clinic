@@ -3,9 +3,9 @@ package rumm.springframework.services.map;
 import java.util.Set;
 
 import rumm.springframework.model.Vet;
-import rumm.springframework.services.CrudService;
+import rumm.springframework.services.VetService;
 
-public class VetServiceMap extends AbstractMapService<Vet, Long> implements CrudService<Vet,Long> {
+public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
 
     @Override
     public Set<Vet> findAll() {

@@ -3,9 +3,9 @@ package rumm.springframework.services.map;
 import java.util.Set;
 
 import rumm.springframework.model.Owner;
-import rumm.springframework.services.CrudService;
+import rumm.springframework.services.OwnerService;
 
-public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements CrudService<Owner,Long> {
+public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
 
     @Override
     public Set<Owner> findAll() {
@@ -30,5 +30,10 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
     @Override
     public Owner findById(final Long id) {
         return super.findById(id);
+    }
+
+    @Override
+    public Owner findByLastName(final String lastName) {
+        return null;
     }
 }
