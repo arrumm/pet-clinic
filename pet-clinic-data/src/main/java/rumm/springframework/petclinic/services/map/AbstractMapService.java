@@ -1,4 +1,4 @@
-package rumm.springframework.services.map;
+package rumm.springframework.petclinic.services.map;
 
 import java.util.HashMap;
 import java.util.HashSet;

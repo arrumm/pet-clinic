@@ -3,12 +3,10 @@ package rumm.springframework.petclinic.bootstrap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import rumm.springframework.model.Owner;
-import rumm.springframework.model.Vet;
-import rumm.springframework.services.OwnerService;
-import rumm.springframework.services.VetService;
-import rumm.springframework.services.map.OwnerServiceMap;
-import rumm.springframework.services.map.VetServiceMap;
+import rumm.springframework.petclinic.model.Owner;
+import rumm.springframework.petclinic.model.Vet;
+import rumm.springframework.petclinic.services.OwnerService;
+import rumm.springframework.petclinic.services.VetService;
 
 @Component
 public class DataInitializer implements CommandLineRunner {
@@ -16,9 +14,9 @@ public class DataInitializer implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
 
-    public DataInitializer() {
-        ownerService = new OwnerServiceMap();
-        vetService = new VetServiceMap();
+    public DataInitializer(final OwnerService ownerService, final VetService vetService) {
+        this.ownerService = ownerService;
+        this.vetService = vetService;
     }
 
     @Override

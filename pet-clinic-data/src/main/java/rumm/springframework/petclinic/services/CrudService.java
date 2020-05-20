@@ -1,4 +1,4 @@
-package rumm.springframework.services;
+package rumm.springframework.petclinic.services;
 
 import java.util.Set;
 

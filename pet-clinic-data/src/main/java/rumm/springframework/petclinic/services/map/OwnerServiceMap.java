@@ -1,10 +1,13 @@
-package rumm.springframework.services.map;
+package rumm.springframework.petclinic.services.map;
 
 import java.util.Set;
 
-import rumm.springframework.model.Owner;
-import rumm.springframework.services.OwnerService;
+import org.springframework.stereotype.Service;
 
+import rumm.springframework.petclinic.model.Owner;
+import rumm.springframework.petclinic.services.OwnerService;
+
+@Service
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
 
     @Override

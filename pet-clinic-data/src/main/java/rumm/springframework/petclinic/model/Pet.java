@@ -1,4 +1,4 @@
-package rumm.springframework.model;
+package rumm.springframework.petclinic.model;
 
 import java.util.Date;
 

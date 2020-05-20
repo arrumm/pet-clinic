@@ -1,6 +1,6 @@
-package rumm.springframework.services;
+package rumm.springframework.petclinic.services;
 
-import rumm.springframework.model.Owner;
+import rumm.springframework.petclinic.model.Owner;
 
 public interface OwnerService extends CrudService<Owner, Long> {
 

@@ -1,10 +1,13 @@
-package rumm.springframework.services.map;
+package rumm.springframework.petclinic.services.map;
 
 import java.util.Set;
 
-import rumm.springframework.model.Pet;
-import rumm.springframework.services.PetService;
+import org.springframework.stereotype.Service;
 
+import rumm.springframework.petclinic.model.Pet;
+import rumm.springframework.petclinic.services.PetService;
+
+@Service
 public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
 
     @Override
