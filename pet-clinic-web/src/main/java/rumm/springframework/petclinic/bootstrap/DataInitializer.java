@@ -4,8 +4,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import rumm.springframework.petclinic.model.Owner;
+import rumm.springframework.petclinic.model.PetType;
 import rumm.springframework.petclinic.model.Vet;
 import rumm.springframework.petclinic.services.OwnerService;
+import rumm.springframework.petclinic.services.PetTypeService;
 import rumm.springframework.petclinic.services.VetService;
 
 @Component
@@ -13,14 +15,25 @@ public class DataInitializer implements CommandLineRunner {
 
     private final OwnerService ownerService;
     private final VetService vetService;
+    private final PetTypeService petTypeService;
 
-    public DataInitializer(final OwnerService ownerService, final VetService vetService) {
+    public DataInitializer(final OwnerService ownerService, final VetService vetService, final PetTypeService petTypeService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.petTypeService = petTypeService;
     }
 
     @Override
     public void run(final String... args) throws Exception {
+
+        PetType dog = new PetType();
+        dog.setName("Dog");
+        PetType dogSaved = petTypeService.save(dog);
+
+        PetType cat = new PetType();
+        cat.setName("Cat");
+        PetType catSaved = petTypeService.save(cat);
+
         Owner owner1 = new Owner();
         owner1.setFirstName("Michael");
         owner1.setLastName("Weston");
