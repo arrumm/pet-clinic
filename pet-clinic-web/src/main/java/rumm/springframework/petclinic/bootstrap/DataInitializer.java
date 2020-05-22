@@ -34,6 +34,14 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     public void run(final String... args) throws Exception {
 
+        final int petTypesCount = petTypeService.findAll().size();
+
+        if (petTypesCount == 0) {
+            loadData();
+        }
+    }
+
+    private void loadData() {
         PetType dog = new PetType();
         dog.setName("Dog");
         PetType savedDogPetType = petTypeService.save(dog);
@@ -104,5 +112,6 @@ public class DataInitializer implements CommandLineRunner {
         vetService.save(vet2);
 
         System.out.println("Loaded Vets....");
+
     }
 }

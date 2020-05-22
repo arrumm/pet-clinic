@@ -52,7 +52,7 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
                     }
                 });
             }
-            return super.save(owner.getId(), owner);
+            return super.save(owner);
         } else {
             return null;
         }
