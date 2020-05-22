@@ -1,11 +1,13 @@
 package rumm.springframework.petclinic.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Pet extends BaseEntity {
+
+    private String name;
     private PetType petType;
     private Owner owner;
-    private Date birthDay;
+    private LocalDate birthDay;
 
     public PetType getPetType() {
         return petType;
@@ -23,11 +25,19 @@ public class Pet extends BaseEntity {
         this.owner = owner;
     }
 
-    public Date getBirthDay() {
+    public LocalDate getBirthDay() {
         return birthDay;
     }
 
-    public void setBirthDay(final Date birthDay) {
+    public void setBirthDay(final LocalDate birthDay) {
         this.birthDay = birthDay;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(final String name) {
+        this.name = name;
     }
 }

@@ -5,10 +5,24 @@ import java.util.Set;
 import org.springframework.stereotype.Service;
 
 import rumm.springframework.petclinic.model.Owner;
+import rumm.springframework.petclinic.model.Pet;
 import rumm.springframework.petclinic.services.OwnerService;
+import rumm.springframework.petclinic.services.PetService;
+import rumm.springframework.petclinic.services.PetTypeService;
+
+import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
 
 @Service
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
+
+    public OwnerServiceMap(final PetTypeService petTypeService, final PetService petService) {
+        this.petTypeService = petTypeService;
+        this.petService = petService;
+    }
+
+    private final PetTypeService petTypeService;
+    private final PetService petService;
 
     @Override
     public Set<Owner> findAll() {
@@ -22,7 +36,26 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
 
     @Override
     public Owner save(final Owner owner) {
-        return super.save(owner.getId(), owner);
+
+        if (nonNull(owner)) {
+            if (nonNull(owner.getPets())) {
+                owner.getPets().forEach(pet -> {
+                    if (nonNull(pet.getPetType()) && nonNull(pet.getPetType().getId())) {
+                        pet.setPetType(petTypeService.save(pet.getPetType()));
+                    } else {
+                        throw new RuntimeException("Pet type is required");
+                    }
+
+                    if (isNull(pet.getId())) {
+                        final Pet petSaved = petService.save(pet);
+                        pet.setId(petSaved.getId());
+                    }
+                });
+            }
+            return super.save(owner.getId(), owner);
+        } else {
+            return null;
+        }
     }
 
     @Override
