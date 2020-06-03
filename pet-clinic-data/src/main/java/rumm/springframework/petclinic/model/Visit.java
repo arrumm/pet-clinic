@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "visits")
-public class Visit {
+public class Visit extends BaseEntity{
 
     @Column(name = "date")
     private LocalDate date;
