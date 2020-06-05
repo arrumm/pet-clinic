@@ -2,11 +2,14 @@ package rumm.springframework.petclinic.services.map;
 
 import java.util.Set;
 
+import org.springframework.stereotype.Service;
+
 import rumm.springframework.petclinic.model.Visit;
 import rumm.springframework.petclinic.services.VisitService;
 
 import static java.util.Objects.isNull;
 
+@Service
 public class VisitServiceMap extends AbstractMapService<Visit, Long> implements VisitService {
 
     @Override

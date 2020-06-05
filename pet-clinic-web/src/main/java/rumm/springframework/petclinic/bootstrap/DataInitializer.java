@@ -11,10 +11,12 @@ import rumm.springframework.petclinic.model.Pet;
 import rumm.springframework.petclinic.model.PetType;
 import rumm.springframework.petclinic.model.Speciality;
 import rumm.springframework.petclinic.model.Vet;
+import rumm.springframework.petclinic.model.Visit;
 import rumm.springframework.petclinic.services.OwnerService;
 import rumm.springframework.petclinic.services.PetTypeService;
 import rumm.springframework.petclinic.services.SpecialityService;
 import rumm.springframework.petclinic.services.VetService;
+import rumm.springframework.petclinic.services.VisitService;
 
 @Component
 public class DataInitializer implements CommandLineRunner {
@@ -23,12 +25,15 @@ public class DataInitializer implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialityService specialityService;
+    private final VisitService visitService;
 
-    public DataInitializer(final OwnerService ownerService, final VetService vetService, final PetTypeService petTypeService, final SpecialityService specialityService) {
+    public DataInitializer(final OwnerService ownerService, final VetService vetService, final PetTypeService petTypeService, final SpecialityService specialityService,
+            final VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -82,6 +87,13 @@ public class DataInitializer implements CommandLineRunner {
         fiona.getPets().add(fionasCat);
 
         ownerService.save(fiona);
+
+        Visit catVisit = new Visit();
+        catVisit.setPet(fionasCat);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("Sneezy kitty");
+
+        visitService.save(catVisit);
 
         System.out.println("Loaded Owners....");
 
