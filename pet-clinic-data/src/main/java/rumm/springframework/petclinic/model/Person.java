@@ -25,6 +25,5 @@ public class Person extends BaseEntity {
         super(id);
         this.firstName = firstName;
         this.lastName = lastName;
-
     }
 }

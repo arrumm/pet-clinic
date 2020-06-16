@@ -15,7 +15,10 @@ import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
 @Service
-@Profile({"default", "map"})
+@Profile({
+        "default",
+        "map"
+})
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
 
     private final PetTypeService petTypeService;
@@ -72,6 +75,12 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
 
     @Override
     public Owner findByLastName(final String lastName) {
-        return null;
+        //@formatter:off
+        return this.findAll()
+                .stream()
+                .filter(owner -> owner.getLastName().equals(lastName))
+                .findFirst()
+                .orElse(null);
+        //@formatter:on
     }
 }

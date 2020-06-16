@@ -17,7 +17,6 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-@Builder
 @Entity
 @Table(name = "owners")
 public class Owner extends Person {
@@ -28,9 +27,11 @@ public class Owner extends Person {
         this.address = address;
         this.city = city;
         this.phoneNumber = phoneNumber;
-        this.pets = pets;
-    }
 
+        if (pets != null) {
+            this.pets = pets;
+        }
+    }
 
     @Column(name = "address")
     private String address;
