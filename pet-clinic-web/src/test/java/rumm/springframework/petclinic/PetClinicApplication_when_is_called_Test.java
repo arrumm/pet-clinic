@@ -8,7 +8,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-class PetClinicApplication_when_is_called {
+class PetClinicApplication_when_is_called_Test {
 
     @BeforeEach
     void setUp() {

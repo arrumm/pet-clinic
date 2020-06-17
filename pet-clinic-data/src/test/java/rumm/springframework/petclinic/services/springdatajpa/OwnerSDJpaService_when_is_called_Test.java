@@ -24,7 +24,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class OwnerSDJpaService_when_is_called {
+class OwnerSDJpaService_when_is_called_Test {
 
     private static final String OWNER_SMITH_LAST_NAME = "Smith";
     @Mock

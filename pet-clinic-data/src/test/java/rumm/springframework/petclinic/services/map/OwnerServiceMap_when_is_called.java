@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class OwnerServiceMap_when_methods_are_called {
+class OwnerServiceMap_when_methods_are_called_Test {
 
     private static final Long OWNER1_ID = 1L;
     private static final String OWNER1_LAST_NAME = "Smyth";
