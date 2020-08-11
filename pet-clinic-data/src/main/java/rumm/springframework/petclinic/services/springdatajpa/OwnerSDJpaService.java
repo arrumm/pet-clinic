@@ -21,8 +21,7 @@ public class OwnerSDJpaService implements OwnerService {
     private PetRepository petRepository;
     private PetTypeRepository petTypeRepository;
 
-    public OwnerSDJpaService(final OwnerRepository ownerRepository, final PetRepository petRepository,
-                            final PetTypeRepository petTypeRepository) {
+    public OwnerSDJpaService(final OwnerRepository ownerRepository, final PetRepository petRepository, final PetTypeRepository petTypeRepository) {
         this.ownerRepository = ownerRepository;
         this.petRepository = petRepository;
         this.petTypeRepository = petTypeRepository;
@@ -47,7 +46,8 @@ public class OwnerSDJpaService implements OwnerService {
 
     @Override
     public List<Owner> findAllByLastNameLike(final String lastName) {
-        return ownerRepository.findAllByLastNameLike(lastName);
+        String wildCard = "%";
+        return ownerRepository.findAllByLastNameLike(wildCard + lastName + wildCard);
     }
 
     @Override
