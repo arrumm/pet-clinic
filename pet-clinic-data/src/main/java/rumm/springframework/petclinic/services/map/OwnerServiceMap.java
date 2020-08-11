@@ -1,5 +1,6 @@
 package rumm.springframework.petclinic.services.map;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.context.annotation.Profile;
@@ -71,6 +72,11 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
     @Override
     public Owner findById(final Long id) {
         return super.findById(id);
+    }
+
+    @Override
+    public List<Owner> findAllByLastNameLike(final String lastName) {
+        return null;
     }
 
     @Override

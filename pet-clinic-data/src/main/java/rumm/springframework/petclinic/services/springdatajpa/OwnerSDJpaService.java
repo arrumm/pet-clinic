@@ -1,6 +1,7 @@
 package rumm.springframework.petclinic.services.springdatajpa;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.context.annotation.Profile;
@@ -42,6 +43,11 @@ public class OwnerSDJpaService implements OwnerService {
     @Override
     public Owner findById(final Long id) {
         return ownerRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Owner> findAllByLastNameLike(final String lastName) {
+        return ownerRepository.findAllByLastNameLike(lastName);
     }
 
     @Override
