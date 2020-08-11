@@ -12,6 +12,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import static java.util.Objects.isNull;
+
 @Setter
 @Getter
 @NoArgsConstructor
@@ -22,4 +24,9 @@ public class BaseEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    public Boolean isNew() {
+        return isNull(this.id);
+    }
+
 }

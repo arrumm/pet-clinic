@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
@@ -99,7 +98,6 @@ class OwnerControllerTest {
         //@formatter:on
     }
 
-    @Disabled
     @Test
     void initCreationForm() throws Exception {
         //@formatter:off
@@ -111,7 +109,6 @@ class OwnerControllerTest {
         verifyNoMoreInteractions(ownerService);
     }
 
-    @Disabled
     @Test
     void processCreationForm() throws Exception {
         when(ownerService.save(ArgumentMatchers.any())).thenReturn(Owner.builder().id(1L).build());
@@ -124,7 +121,6 @@ class OwnerControllerTest {
         verify(ownerService).save(ArgumentMatchers.any());
     }
 
-    @Disabled
     @Test
     void initUpdateOwnerForm() throws Exception {
         when(ownerService.findById(anyLong())).thenReturn(Owner.builder().id(1L).build());
@@ -137,7 +133,6 @@ class OwnerControllerTest {
         verifyNoMoreInteractions(ownerService);
     }
 
-    @Disabled
     @Test
     void processUpdateOwnerForm() throws Exception {
         when(ownerService.save(ArgumentMatchers.any())).thenReturn(Owner.builder().id(1L).build());
