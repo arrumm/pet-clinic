@@ -65,7 +65,7 @@ public class DataInitializer implements CommandLineRunner {
         Pet mikesPet = new Pet();
         mikesPet.setPetType(savedDogPetType);
         mikesPet.setOwner(mike);
-        mikesPet.setBirthDay(LocalDate.now());
+        mikesPet.setBirthDate(LocalDate.now());
         mikesPet.setName("Bob");
         mikesPet.setOwner(mike);
         mike.getPets().add(mikesPet);
@@ -82,7 +82,7 @@ public class DataInitializer implements CommandLineRunner {
         Pet fionasCat = new Pet();
         fionasCat.setName("Betsy");
         fionasCat.setPetType(savedCatPetType);
-        fionasCat.setBirthDay(LocalDate.now());
+        fionasCat.setBirthDate(LocalDate.now());
         fionasCat.setOwner(fiona);
         fiona.getPets().add(fionasCat);
 
