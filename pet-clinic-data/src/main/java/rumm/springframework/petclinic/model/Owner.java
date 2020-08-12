@@ -14,6 +14,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import static java.util.Objects.nonNull;
+
 @Setter
 @Getter
 @NoArgsConstructor
@@ -28,7 +30,7 @@ public class Owner extends Person {
         this.city = city;
         this.phoneNumber = phoneNumber;
 
-        if (pets != null) {
+        if (nonNull(pets)) {
             this.pets = pets;
         }
     }
@@ -45,4 +47,8 @@ public class Owner extends Person {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     private Set<Pet> pets = new HashSet<>();
 
+    public Pet getPet(final String name, final boolean ignoreNew) {
+        final String normalizedNameToFind = name.toLowerCase();
+        return getPets().stream().filter(pet -> (!ignoreNew || !pet.isNew()) && pet.getName().toLowerCase().equals(normalizedNameToFind)).findFirst().orElseGet(null);
+    }
 }
