@@ -1,6 +1,6 @@
 package rumm.springframework.petclinic.controllers;
 
-import java.util.Collection;
+import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -41,7 +41,7 @@ public class PetController {
     }
 
     @ModelAttribute("types")
-    public Collection<PetType> populatePetTypes() {
+    public Set<PetType> populatePetTypes() {
         return petTypeService.findAll();
     }
 
@@ -69,13 +69,12 @@ public class PetController {
         if (StringUtils.hasLength(pet.getName()) && pet.isNew() && owner.getPet(pet.getName(), true) != null) {
             result.rejectValue("name", "duplicate", "already exists");
         }
-        owner.getPets().add(pet);
+        pet.setOwner(owner);
         if (result.hasErrors()) {
             model.put("pet", pet);
             return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
         } else {
             petService.save(pet);
-
             return "redirect:/owners/" + owner.getId();
         }
     }

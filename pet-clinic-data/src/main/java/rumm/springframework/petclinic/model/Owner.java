@@ -49,6 +49,6 @@ public class Owner extends Person {
 
     public Pet getPet(final String name, final boolean ignoreNew) {
         final String normalizedNameToFind = name.toLowerCase();
-        return getPets().stream().filter(pet -> (!ignoreNew || !pet.isNew()) && pet.getName().toLowerCase().equals(normalizedNameToFind)).findFirst().orElseGet(null);
+        return getPets().stream().filter(pet -> (!ignoreNew || !pet.isNew()) && pet.getName().toLowerCase().equals(normalizedNameToFind)).findFirst().orElse(null);
     }
 }
