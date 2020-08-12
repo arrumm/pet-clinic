@@ -21,6 +21,7 @@ import rumm.springframework.petclinic.model.Owner;
 import rumm.springframework.petclinic.model.Pet;
 import rumm.springframework.petclinic.model.PetType;
 import rumm.springframework.petclinic.services.PetService;
+import rumm.springframework.petclinic.services.VisitService;
 
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
@@ -36,13 +37,19 @@ class VisitControllerTest {
     private static final String PETS_CREATE_OR_UPDATE_VISIT_FORM = "pets/createOrUpdateVisitForm";
     private static final String REDIRECT_OWNERS_ID = "redirect:/owners/{ownerId}";
     private static final String YET_ANOTHER_VISIT_DESCRIPTION = "yet another visit";
-    private final UriTemplate visitsUriTemplate = new UriTemplate("/owners/{ownerId}/pets/{petId}/visits/new");
-    private final Map<String, String> uriVariables = new HashMap<>();
+
     @Mock
     PetService petService;
+
+    private final UriTemplate visitsUriTemplate = new UriTemplate("/owners/{ownerId}/pets/{petId}/visits/new");
+
     @InjectMocks
     VisitController visitController;
+
     private MockMvc mockMvc;
+    private final Map<String, String> uriVariables = new HashMap<>();
+    @Mock
+    VisitService visitService;
     private URI visitsUri;
 
     @BeforeEach
@@ -65,6 +72,7 @@ class VisitControllerTest {
     void initNewVisitForm() throws Exception {
         mockMvc.perform(get(visitsUri)).andExpect(status().isOk()).andExpect(view().name(PETS_CREATE_OR_UPDATE_VISIT_FORM));
     }
+
 
     @Test
     void processNewVisitForm() throws Exception {
