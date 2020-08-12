@@ -1,6 +1,6 @@
 package rumm.springframework.petclinic.controllers;
 
-import java.util.Set;
+import java.util.Collection;
 
 import javax.validation.Valid;
 
@@ -41,7 +41,7 @@ public class PetController {
     }
 
     @ModelAttribute("types")
-    public Set<PetType> populatePetTypes() {
+    public Collection<PetType> populatePetTypes() {
         return petTypeService.findAll();
     }
 
